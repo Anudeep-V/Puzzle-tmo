@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "nx",
     "nx": "nx",
-    "start": "nx serve okreads",
-    "build": "nx build",
+    "start": "nx serve okreads --prod",
+    "build": "nx build --prod",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e okreads-e2e",
