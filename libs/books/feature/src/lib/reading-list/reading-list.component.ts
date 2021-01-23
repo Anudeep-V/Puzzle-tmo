@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getReadingList, removeFromReadingList } from '@tmo/books/data-access';
+import {
+  addToFinishedList,
+  getReadingList,
+  removeFromReadingList,
+} from '@tmo/books/data-access';
 
 @Component({
   selector: 'tmo-reading-list',
@@ -14,5 +18,16 @@ export class ReadingListComponent {
 
   removeFromReadingList(item) {
     this.store.dispatch(removeFromReadingList({ item }));
+  }
+
+  addTofinishedList(item) {
+    this.store.dispatch(addToFinishedList({ item }));
+    this.readingList$ = this.store.select(getReadingList);
+  }
+
+  formatDate(date: void | string) {
+    return date
+      ? new Intl.DateTimeFormat('en-US').format(new Date(date))
+      : undefined;
   }
 }
